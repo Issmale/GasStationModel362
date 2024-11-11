@@ -1,0 +1,11 @@
+LocationID,ProductID,ProductName,Quantity,Price,Supplier,ApplicableLocations,ReorderLevel
+L003,P003,Chips,100,2.25,SnackMaster,StoreB|StoreC,15
+L003,P005,Water,3,1.25,Casey's,StoreR,10
+L003,P008,Pen,40,0.25,BIC,StoreR|StoreQ,20
+L002,P002,Orange Juice,50,2.5,JuiceCo,StoreA|StoreB,25
+L002,P005,Soda,80,1.75,SodaWorks,StoreB|StoreC,30
+L001,P001,Green Apple,100,0.55,FreshFruits,StoreA|StoreC,50
+L001,P004,Banana,120,0.3,FreshFruits,StoreA|StoreC,45
+L001,P009,Grapes,50,2.0,FreshFruits,StoreA|StoreB,20
+L004,P007,Milk,10,1.0,DairyFarm,StoreA|StoreC,15
+L004,P008,Bread,150,1.5,BakerySupplies,StoreA|StoreB|StoreC,40

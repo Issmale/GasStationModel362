@@ -1,0 +1,9 @@
+LocationID,FuelType,Quantity,ReorderLevel
+LOC001,Diesel,380.0,1000.0
+LOC001,Gasoline,3100.0,800.0
+LOC002,Diesel,2500.0,1000.0
+LOC002,Gasoline,1500.0,800.0
+LOC003,Kerosene,1000.0,500.0
+LOC003,Diesel,2000.0,700.0
+LOC004,Gasoline,0.0,800.0
+LOC004,Diesel,1000.0,121.0
