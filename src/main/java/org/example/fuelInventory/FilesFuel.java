@@ -3,6 +3,11 @@ package org.example.fuelInventory;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @Author Issmale Bekri
+ */
+
+
 public class FilesFuel implements FilesFuelInterface {
     private Map<String, List<FuelUpdate>> inventoryData = new HashMap<>();
     private static final String FILE_PATH = "FuelInventoryData.csv";

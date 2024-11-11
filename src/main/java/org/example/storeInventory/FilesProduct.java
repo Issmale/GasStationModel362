@@ -3,6 +3,10 @@ package org.example.storeInventory;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public class FilesProduct implements FilesProductInterface {
     private Map<String, List<StoreUpdate>> inventoryData = new HashMap<>();
     private static final String FILE_PATH = "StoreInventoryData.csv";// Path for the CSV file

@@ -1,5 +1,9 @@
 package org.example.storeInventory;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public class StoreUpdate implements StoreUpdateInterface {
     private String locationID;
     private String productID;

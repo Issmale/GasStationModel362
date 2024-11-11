@@ -4,6 +4,10 @@ package org.example.storeInventory;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public class StoreInventorySystem implements StoreInventorySystemInterface {
     private final FilesProduct filesProduct;
     private String locationID;

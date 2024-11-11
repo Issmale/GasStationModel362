@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public class FuelInventoryController implements FuelInventoryControllerInterface {
     private final FilesFuel filesFuel;
     private final Scanner scanner;

@@ -2,6 +2,10 @@ package org.example.storeInventory;
 
 import java.util.List;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public class StoreProduct implements StoreProductInterface {
     private String productID;
     private String productName;

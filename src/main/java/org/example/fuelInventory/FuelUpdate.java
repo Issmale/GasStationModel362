@@ -1,5 +1,10 @@
 package org.example.fuelInventory;
 
+
+/**
+ * @Author Issmale Bekri
+ */
+
 public class FuelUpdate implements FuelUpdateInterface {
     private String fuelType;
     private double quantity;

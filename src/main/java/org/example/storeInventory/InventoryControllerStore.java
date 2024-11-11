@@ -3,6 +3,10 @@ package org.example.storeInventory;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public class InventoryControllerStore implements InventoryControllerStoreInterface {
     private final FilesProduct filesProduct;  // Handles reading and writing to CSV
     private final Scanner scanner;

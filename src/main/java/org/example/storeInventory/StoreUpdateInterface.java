@@ -1,5 +1,9 @@
 package org.example.storeInventory;
 
+/**
+ * @Author Issmale Bekri
+ */
+
 public interface StoreUpdateInterface {
     // Getters and setters for locationID
     String getLocationID();
