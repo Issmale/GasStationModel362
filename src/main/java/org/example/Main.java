@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.adjustFuel.FuelPriceController;
 import org.example.fuelInventory.FilesFuel;
 import org.example.fuelInventory.FuelInventoryController;
 import org.example.fuelInventory.FuelInventorySystem;
@@ -25,8 +26,53 @@ public class Main {
             // Check the command and perform corresponding actions
             switch (command) {
                 case "a":
-                    // Call function for Adjust Fuel
+                    FuelPriceController controller = new FuelPriceController();
+                    boolean exit = false;
+
+                    while (!exit) {
+                        // Display menu
+                        System.out.println("Fuel Price Management System");
+                        System.out.println("1. Adjust Fuel Price");
+                        System.out.println("2. Print Fuel Price Change Log");
+                        System.out.println("3. Exit");
+                        System.out.print("Please select an option (1-3): ");
+
+                        int choice = scanner.nextInt();
+                        scanner.nextLine(); // Consume newline
+
+                        switch (choice) {
+                            case 1:
+                                // Adjust fuel price
+                                System.out.print("Enter fuel type (e.g., Diesel, Unleaded): ");
+                                String fuelType = scanner.nextLine();
+
+                                System.out.print("Enter new price for " + fuelType + ": ");
+                                double newPrice = scanner.nextDouble();
+                                scanner.nextLine(); // Consume newline
+
+                                controller.execute("adjustPrice", fuelType, newPrice);
+                                System.out.println("Adjusted " + fuelType + " price to " + newPrice);
+                                break;
+
+                            case 2:
+                                // Print logs
+                                System.out.println("Fuel Price Change Log:");
+                                controller.execute("printLogs", "", 0.0);
+                                break;
+
+                            case 3:
+                                // Exit the fuel price management system menu
+                                exit = true;
+                                System.out.println("Exiting Fuel Price Management System. Goodbye!");
+                                break;
+
+                            default:
+                                System.out.println("Invalid option. Please enter a number between 1 and 3.");
+                        }
+                        System.out.println(); // Add an empty line for readability
+                    }
                     break;
+
                 case "f":
                     System.out.println("You selected Fuel Inventory.");
                     FilesFuel filesFuel = new FilesFuel();
@@ -42,12 +88,13 @@ public class Main {
 
                     // Start the interactive session for managing fuel inventory
                     fuelController.execute();
-                    // Call function for Fuel Inventory
                     break;
+
                 case "i":
                     System.out.println("You selected Item Delivery.");
                     // Call function for Item Delivery
                     break;
+
                 case "s":
                     System.out.println("You selected Store Inventory.");
                     FilesProduct filesProduct = new FilesProduct();
@@ -58,10 +105,12 @@ public class Main {
                     // Start the inventory system interface
                     inventoryController.execute();
                     break;
+
                 case "q":
                     System.out.println("Exiting the program.");
                     scanner.close(); // Close scanner to prevent resource leak
                     return; // Exit the loop and end the program
+
                 default:
                     System.out.println("Invalid command. Please choose a valid option.");
             }

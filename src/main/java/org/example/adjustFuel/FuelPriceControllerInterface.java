@@ -1,6 +1,7 @@
+// FuelPriceControllerInterface.java
 package org.example.adjustFuel;
 
 public interface FuelPriceControllerInterface {
-    boolean adjustPrice(String fuelType, double newPrice);
-}
 
+    void execute(String command,String fuelType, double value);
+}

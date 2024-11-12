@@ -1,3 +1,4 @@
+// FuelPriceManagerInterface.java
 package org.example.adjustFuel;
 
 public interface FuelPriceManagerInterface {

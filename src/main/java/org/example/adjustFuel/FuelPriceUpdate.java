@@ -1,3 +1,4 @@
+// FuelPriceUpdate.java
 package org.example.adjustFuel;
 
 import java.util.Date;
@@ -17,10 +18,19 @@ public class FuelPriceUpdate implements FuelPriceUpdateInterface {
 
     @Override
     public String getFuelType() { return fuelType; }
+
     @Override
     public double getOldPrice() { return oldPrice; }
+
     @Override
     public double getNewPrice() { return newPrice; }
+
     @Override
     public Date getTimestamp() { return timestamp; }
+
+    @Override
+    public String toString() {
+        return "FuelPriceUpdate{fuelType='" + fuelType + "', oldPrice=" + oldPrice +
+                ", newPrice=" + newPrice + ", timestamp=" + timestamp + "}";
+    }
 }
