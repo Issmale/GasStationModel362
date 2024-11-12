@@ -4,6 +4,8 @@ import org.example.adjustFuel.FuelPriceController;
 import org.example.fuelInventory.FilesFuel;
 import org.example.fuelInventory.FuelInventoryController;
 import org.example.fuelInventory.FuelInventorySystem;
+import org.example.itemDelivery.InventoryController;
+import org.example.itemDelivery.InventoryManager;
 import org.example.storeInventory.FilesProduct;
 import org.example.storeInventory.InventoryControllerStore;
 import org.example.storeInventory.StoreInventorySystem;
@@ -92,7 +94,12 @@ public class Main {
 
                 case "i":
                     System.out.println("You selected Item Delivery.");
-                    // Call function for Item Delivery
+                    // Initialize InventoryManager and InventoryController for Item Delivery
+                    InventoryManager inventoryManager = new InventoryManager();
+                    InventoryController itemDeliveryController = new InventoryController(inventoryManager);
+
+                    // Start the item delivery system interface
+                    itemDeliveryController.execute();
                     break;
 
                 case "s":

@@ -9,7 +9,7 @@ import java.util.Map;
 public class InventorySystem implements InventorySystemInterface {
     private Map<String, Integer> inventoryRecords;
 
-    public InventorySystem() {
+    public InventorySystem(InventoryManager inventoryManager) {
         inventoryRecords = new HashMap<>();
         loadInventoryFromFile();
     }
@@ -32,16 +32,16 @@ public class InventorySystem implements InventorySystemInterface {
     @Override
     public List<InventoryItem> getExpectedItems(String supplierID) {
         List<InventoryItem> expectedItems = new ArrayList<>();
-        expectedItems.add(new InventoryItem("Item1", "Description of Item1", 10, 5.0));
+        expectedItems.add(new InventoryItem("Item", "Description of Item1", 10, 5.0));
         return expectedItems;
     }
 
     @Override
     public boolean updateInventory(InventoryItem item, int quantity) {
         // Update the inventory records for the specified item
-        int updatedQuantity = inventoryRecords.getOrDefault(item.getItemID(), 0) + quantity;
-        inventoryRecords.put(item.getItemID(), updatedQuantity);
-        recordInventoryUpdate(new InventoryUpdate(item.getItemID(), quantity, item.getQuantity()));
+        int updatedQuantity = inventoryRecords.getOrDefault(item.getId(), 0) + quantity;
+        inventoryRecords.put(item.getId(), updatedQuantity);
+        recordInventoryUpdate(new InventoryUpdate(item.getId(), quantity, item.getQuantity()));
         return true;
     }
 
@@ -59,5 +59,8 @@ public class InventorySystem implements InventorySystemInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void printInventory() {
     }
 }

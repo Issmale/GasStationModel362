@@ -14,7 +14,7 @@ public class InventoryItem implements InventoryItemInterface {
     }
 
     @Override
-    public String getItemID() {
+    public String getId() {
         return itemID;
     }
 
@@ -31,6 +31,14 @@ public class InventoryItem implements InventoryItemInterface {
     @Override
     public double getUnitPrice() {
         return unitPrice;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity =  quantity;
+    }
+
+    public void setPrice(double price) {
+        this.unitPrice = price;
     }
 }
 

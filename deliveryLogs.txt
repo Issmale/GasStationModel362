@@ -1,0 +1,4 @@
+
+Supplier: BigGoods
+ID: 1, Description: Chips, Price: $4.0, Quantity: 400
+
