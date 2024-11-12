@@ -3,63 +3,43 @@ package org.example.fuelDelivery;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 // Main Program
 public class Main2 {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         InventoryManager manager = new InventoryManager();
 
-        // Test Case 1: Valid inventory updates (no budget exceed)
-        List<InventoryUpdate> updates1 = new ArrayList<>();
-        updates1.add(new InventoryUpdate("Item A", 50.0, 20.0, 100.0));  // Item A: Cost $100
-        updates1.add(new InventoryUpdate("Item B", 30.0, 10.0, 150.0));  // Item B: Cost $150
+        // Prompt for inventory updates
+        System.out.println("Enter the number of inventory updates: ");
+        int numUpdates = scanner.nextInt();
 
-        System.out.println("Test Case 1: Valid updates within budget");
-        boolean success1 = manager.manageInventory("Location123", updates1, 500.0); // Budget: $500
-        if (success1) {
-            System.out.println("Inventory updated successfully.\n");
-        } else {
-            System.out.println("Inventory update failed due to budget limit.\n");
+        List<InventoryUpdate> updates = new ArrayList<>();
+        double budget = 500.0; // You can modify this budget as needed
+
+        // Gather updates from the user
+        for (int i = 0; i < numUpdates; i++) {
+            System.out.println("Enter item name: ");
+            String itemName = scanner.next();
+            System.out.println("Enter quantity: ");
+            double quantity = scanner.nextDouble();
+            System.out.println("Enter reorder level: ");
+            double reorderLevel = scanner.nextDouble();
+            System.out.println("Enter cost: ");
+            double cost = scanner.nextDouble();
+            updates.add(new InventoryUpdate(itemName, quantity, reorderLevel, cost));
         }
 
-        // Test Case 2: Inventory updates exceed the budget
-        List<InventoryUpdate> updates2 = new ArrayList<>();
-        updates2.add(new InventoryUpdate("Item A", 50.0, 20.0, 100.0));  // Item A: Cost $100
-        updates2.add(new InventoryUpdate("Item B", 30.0, 10.0, 450.0));  // Item B: Cost $450
-
-        System.out.println("Test Case 2: Updates exceeding budget");
-        boolean success2 = manager.manageInventory("Location123", updates2, 500.0); // Budget: $500
-        if (success2) {
+        // Run the inventory management logic
+        boolean success = manager.manageInventory("Location123", updates, budget);
+        if (success) {
             System.out.println("Inventory updated successfully.\n");
         } else {
-            System.out.println("Inventory update failed due to budget limit.\n");
+            System.out.println("Inventory update failed.\n");
         }
 
-        // Test Case 3: Valid inventory updates, some items are below reorder level
-        List<InventoryUpdate> updates3 = new ArrayList<>();
-        updates3.add(new InventoryUpdate("Item A", 15.0, 20.0, 100.0));  // Below reorder level
-        updates3.add(new InventoryUpdate("Item B", 25.0, 10.0, 150.0));  // Above reorder level
-
-        System.out.println("Test Case 3: Updates with low inventory items");
-        boolean success3 = manager.manageInventory("Location123", updates3, 500.0); // Budget: $500
-        if (success3) {
-            System.out.println("Inventory updated successfully.\n");
-        } else {
-            System.out.println("Inventory update failed due to low inventory.\n");
-        }
-
-        // Test Case 4: Inventory updates, no items below reorder level but budget exceeded
-        List<InventoryUpdate> updates4 = new ArrayList<>();
-        updates4.add(new InventoryUpdate("Item A", 50.0, 20.0, 100.0));  // Item A: Cost $100
-        updates4.add(new InventoryUpdate("Item B", 30.0, 10.0, 450.0));  // Item B: Cost $450
-
-        System.out.println("Test Case 4: Updates within budget but some items below reorder level");
-        boolean success4 = manager.manageInventory("Location123", updates4, 600.0); // Budget: $600
-        if (success4) {
-            System.out.println("Inventory updated successfully.\n");
-        } else {
-            System.out.println("Inventory update failed due to low inventory.\n");
-        }
+        scanner.close();
     }
 }
 
@@ -234,19 +214,26 @@ interface InventoryControllerInterface {
 
 interface InventorySystemInterface {
     boolean updateInventory(String locationID, List<InventoryUpdate> inventoryUpdates, double budget);
+
     void alertLowInventory(List<InventoryUpdate> inventoryUpdates);
+
     List<InventoryUpdate> getInventoryData(String locationID);
 }
 
 interface FilesInventoryInterface {
     boolean putInventoryData(String locationID, List<InventoryUpdate> inventoryUpdates);
+
     List<InventoryUpdate> getInventoryData(String locationID);
 }
 
 interface InventoryUpdateInterface {
     String getItemName();
+
     double getQuantity();
+
     double getReorderLevel();
+
     void setQuantity(double quantity);
+
     double getCost();
 }

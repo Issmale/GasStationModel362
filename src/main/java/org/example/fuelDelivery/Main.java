@@ -2,64 +2,59 @@ package org.example.fuelDelivery;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 // Main Program
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         FuelDeliveryManager manager = new FuelDeliveryManager();
 
-        // Test Case 1: Valid fuel delivery schedule
-        List<FuelDelivery> deliveries1 = new ArrayList<>();
-        deliveries1.add(new FuelDelivery("Location A", "Gasoline", 1000, "2024-11-10", "10:00-14:00"));
+        System.out.print("Enter available fuel supply: ");
+        double availableFuel = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
 
-        System.out.println("Test Case 1: Valid fuel delivery schedule");
-        boolean success1 = manager.manageFuelDeliveries(deliveries1, 5000);
-        if (success1) {
-            System.out.println("Fuel deliveries scheduled successfully.\n");
-        } else {
-            System.out.println("Fuel delivery scheduling failed.\n");
+        System.out.print("Enter the number of deliveries to schedule: ");
+        int numDeliveries = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        List<FuelDelivery> deliveries = new ArrayList<>();
+
+        for (int i = 0; i < numDeliveries; i++) {
+            System.out.println("\nEnter details for delivery " + (i + 1) + ":");
+
+            System.out.print("Location: ");
+            String location = scanner.nextLine();
+
+            System.out.print("Fuel type (e.g., Gasoline, Diesel): ");
+            String fuelType = scanner.nextLine();
+
+            System.out.print("Quantity (in liters): ");
+            double quantity = scanner.nextDouble();
+            scanner.nextLine(); // Consume newline
+
+            System.out.print("Date (YYYY-MM-DD): ");
+            String date = scanner.nextLine();
+
+            System.out.print("Delivery window (HH:MM-HH:MM): ");
+            String deliveryWindow = scanner.nextLine();
+
+            deliveries.add(new FuelDelivery(location, fuelType, quantity, date, deliveryWindow));
         }
 
-        // Test Case 2: Delivery Schedule Conflict
-        List<FuelDelivery> deliveries2 = new ArrayList<>();
-        deliveries2.add(new FuelDelivery("Location A", "Gasoline", 1000, "2024-11-10", "10:00-14:00"));
-        deliveries2.add(new FuelDelivery("Location B", "Diesel", 2000, "2024-11-10", "12:00-16:00")); // Conflict with Location A
+        System.out.println("\nScheduling deliveries...");
+        boolean success = manager.manageFuelDeliveries(deliveries, availableFuel);
 
-        System.out.println("Test Case 2: Delivery schedule conflict");
-        boolean success2 = manager.manageFuelDeliveries(deliveries2, 5000);
-        if (success2) {
-            System.out.println("Fuel deliveries scheduled successfully.\n");
+        if (success) {
+            System.out.println("Fuel deliveries scheduled successfully.");
         } else {
-            System.out.println("Fuel delivery scheduling failed due to schedule conflict.\n");
+            System.out.println("Fuel delivery scheduling failed.");
         }
 
-        // Test Case 3: Insufficient fuel supply
-        List<FuelDelivery> deliveries3 = new ArrayList<>();
-        deliveries3.add(new FuelDelivery("Location A", "Gasoline", 10000, "2024-11-12", "10:00-14:00")); // Exceeds supply
-
-        System.out.println("Test Case 3: Insufficient fuel supply");
-        boolean success3 = manager.manageFuelDeliveries(deliveries3, 5000); // Limited supply
-        if (success3) {
-            System.out.println("Fuel deliveries scheduled successfully.\n");
-        } else {
-            System.out.println("Fuel delivery scheduling failed due to insufficient fuel supply.\n");
-        }
-
-        // Test Case 4: Last-minute demand surge
-        List<FuelDelivery> deliveries4 = new ArrayList<>();
-        deliveries4.add(new FuelDelivery("Location A", "Gasoline", 1000, "2024-11-10", "10:00-14:00"));
-
-        System.out.println("Test Case 4: Last-minute demand surge");
-        boolean success4 = manager.manageFuelDeliveries(deliveries4, 5000);
-        if (success4) {
-            System.out.println("Fuel deliveries scheduled successfully.\n");
-        } else {
-            System.out.println("Fuel delivery scheduling failed due to demand surge.\n");
-        }
+        scanner.close();
     }
 }
 
-// FuelDeliveryManager.java
 class FuelDeliveryManager implements FuelDeliveryManagerInterface {
     private FuelDeliveryController controller;
 
@@ -73,7 +68,6 @@ class FuelDeliveryManager implements FuelDeliveryManagerInterface {
     }
 }
 
-// FuelDeliveryController.java
 class FuelDeliveryController implements FuelDeliveryControllerInterface {
     private FuelDeliverySystem system;
 
@@ -87,7 +81,6 @@ class FuelDeliveryController implements FuelDeliveryControllerInterface {
     }
 }
 
-// FuelDeliverySystem.java
 class FuelDeliverySystem implements FuelDeliverySystemInterface {
     private FuelSupplier fuelSupplier;
     private FuelDeliveryCalendar calendar;
@@ -170,7 +163,6 @@ class FuelDeliverySystem implements FuelDeliverySystemInterface {
     }
 }
 
-// FuelDeliveryCalendar.java
 class FuelDeliveryCalendar {
     private List<FuelDelivery> scheduledDeliveries;
 
@@ -189,7 +181,6 @@ class FuelDeliveryCalendar {
     }
 }
 
-// FuelSupplier.java
 class FuelSupplier {
     private double availableFuel;
 
@@ -202,7 +193,6 @@ class FuelSupplier {
     }
 }
 
-// FuelDelivery.java
 class FuelDelivery {
     private String location;
     private String fuelType;
@@ -245,7 +235,6 @@ class FuelDelivery {
     }
 }
 
-// Interfaces
 interface FuelDeliveryManagerInterface {
     boolean manageFuelDeliveries(List<FuelDelivery> fuelDeliveries, double availableFuel);
 }
