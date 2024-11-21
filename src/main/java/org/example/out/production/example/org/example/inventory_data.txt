@@ -1,0 +1,6 @@
+Location: Location123
+ItemName: Chips, Quantity: 50.0, Cost: 2.5
+-----
+Location: Location123
+ItemName: Brooms, Quantity: 5.0, Cost: 10.0
+-----
