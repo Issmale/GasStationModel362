@@ -1,0 +1,22 @@
+EmployeeID,EmployeeName,EmployeeContactInfo,Day,ShiftTime,AvailabilityStatus
+E001,John Doe,555-1234,Monday,09:00-13:00,Unavailable
+E001,John Doe,555-1234,Monday,13:00-17:00,Unavailable
+E001,John Doe,555-1234,Tuesday,09:00-13:00,Available
+E001,John Doe,555-1234,Thursday,05:00-20:00,Available
+E001,John Doe,555-1234,Saturday,13:00-17:00,Available
+E002,Jane Smith,555-5678,Tuesday,09:00-13:00,Available
+E002,Jane Smith,555-5678,Wednesday,13:00-17:00,Unavailable
+E002,Jane Smith,555-5678,Friday,09:00-13:00,Available
+E002,Jane Smith,555-5678,Saturday,09:00-13:00,Available
+E003,Michael Johnson,555-9876,Monday,09:00-13:00,Unavailable
+E003,Michael Johnson,555-9876,Wednesday,13:00-17:00,Available
+E003,Michael Johnson,555-9876,Friday,09:00-13:00,Available
+E003,Michael Johnson,555-9876,Sunday,13:00-17:00,Available
+E004,Emily Davis,555-6543,Tuesday,09:00-13:00,Available
+E004,Emily Davis,555-6543,Thursday,13:00-17:00,Unavailable
+E004,Emily Davis,555-6543,Friday,09:00-13:00,Available
+E004,Emily Davis,555-6543,Sunday,09:00-13:00,Unavailable
+E005,Jack,555-123,Sunday,01:00-12:00,Available
+E001,John Doe,555-1234,Sunday,12:00-23:00,Available
+E005,Jack,555-123,Monday,09:00-13:00,Available
+E005,Jack,555-123,Friday,09:00-13:00,Available
