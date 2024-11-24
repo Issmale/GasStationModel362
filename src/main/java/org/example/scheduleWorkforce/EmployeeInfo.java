@@ -30,15 +30,7 @@ public class EmployeeInfo implements EmployeeInterface {
         return employeeContactInfo;
     }
 
-    @Override
-    public boolean isAvailableForShift(String shiftTime) {
-        return false;
-    }
 
-    @Override
-    public void updateAvailability(String shiftTime, boolean available) {
-
-    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

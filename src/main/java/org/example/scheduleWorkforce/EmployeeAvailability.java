@@ -47,29 +47,34 @@ public class EmployeeAvailability implements EmployeeAvailabilityInterface{
             // Read the existing data from the file
             List<String> lines = Files.readAllLines(Paths.get("EmployeeSchedule.csv"));
 
-
             // Check if the employee exists in the file
             boolean employeeExists = lines.stream().anyMatch(line -> line.startsWith(employeeID + ","));
 
             if (employeeExists) {
-                // Check if the availability already exists for the employee on the same day and shift
+                // Check if the employee is already scheduled for the same day and shift
                 for (int i = 0; i < lines.size(); i++) {
                     String line = lines.get(i);
-                    // Split the line into components
                     String[] components = line.split(",");
 
                     // Check for exact match on employeeID, day, and shiftTime
-                    if (components[0].equals(employeeID) && components[3].equals(day)) {
-                        // Replace the old availability with the new one
-                        lines.set(i, newAvailability);
+                    if (components[0].equals(employeeID) && components[3].equals(day) && components[4].equals(shiftTime)) {
+                        // If found, we update the availability status (or any other details if necessary)
+                        lines.set(i, newAvailability); // Replace the old availability with the new one
                         System.out.println("Updated availability: " + newAvailability);
                         isAddedOrUpdated = true;
                         break;
                     }
                 }
 
+                // If no matching day and shift found, we need to add a new availability line
+                if (!isAddedOrUpdated) {
+                    lines.add(newAvailability);
+                    System.out.println("Adding new availability: " + newAvailability);
+                    isAddedOrUpdated = true;
+                }
+
             } else {
-                // For new employees, add a full new entry
+                // If employee does not exist, add a new entry for this employee
                 lines.add(newAvailability);
                 System.out.println("Adding new availability: " + newAvailability);
                 isAddedOrUpdated = true;
@@ -88,6 +93,7 @@ public class EmployeeAvailability implements EmployeeAvailabilityInterface{
 
         return isAddedOrUpdated;
     }
+
 
     @Override
     public boolean removeAvailability(String employeeID, String day, String shiftTime) {

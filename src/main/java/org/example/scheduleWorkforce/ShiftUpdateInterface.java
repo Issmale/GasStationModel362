@@ -6,4 +6,3 @@ public interface ShiftUpdateInterface {
     boolean resolveShiftConflict(String storeID, Shift shift);
     boolean addShift(String storeID, Shift shift);
 }
-
