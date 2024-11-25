@@ -20,3 +20,4 @@ E005,Jack,555-123,Sunday,01:00-12:00,Available
 E001,John Doe,555-1234,Sunday,12:00-23:00,Available
 E005,Jack,555-123,Monday,09:00-13:00,Available
 E005,Jack,555-123,Friday,09:00-13:00,Available
+E001,John Doe,555-1234,Monday,05:00-13:00,Available
