@@ -18,77 +18,64 @@ public class ShiftUpdate implements ShiftUpdateInterface {
         this.staffingStatus = staffingStatus;
     }
 
+    @Override
     // Getters and Setters for all properties
     public String getDay() {
         return day;
     }
 
+    @Override
     public void setDay(String day) {
         this.day = day;
     }
 
+    @Override
     public String getShiftTime() {
         return shiftTime;
     }
 
+    @Override
     public void setShiftTime(String shiftTime) {
         this.shiftTime = shiftTime;
     }
 
+    @Override
     public int getRequiredStaff() {
         return requiredStaff;
     }
 
+    @Override
     public void setRequiredStaff(int requiredStaff) {
         this.requiredStaff = requiredStaff;
     }
 
+    @Override
     public int getAvailableStaff() {
         return availableStaff;
     }
 
+    @Override
     public void setAvailableStaff(int availableStaff) {
         this.availableStaff = availableStaff;
     }
 
+    @Override
     public String getEmployeeID() {
         return employeeID;
     }
 
+    @Override
     public void setEmployeeID(String employeeID) {
         this.employeeID = employeeID;
     }
 
+    @Override
     public String getStaffingStatus() {
         return staffingStatus;
     }
 
+    @Override
     public void setStaffingStatus(String staffingStatus) {
         this.staffingStatus = staffingStatus;
-    }
-
-    // Implementations of the ShiftUpdateInterface methods (left empty for now)
-    @Override
-    public boolean updateShift(String storeID, Shift shift) {
-        // Method implementation will go here
-        return false;
-    }
-
-    @Override
-    public boolean removeShift(String storeID, String shiftID) {
-        // Method implementation will go here
-        return false;
-    }
-
-    @Override
-    public boolean resolveShiftConflict(String storeID, Shift shift) {
-        // Method implementation will go here
-        return false;
-    }
-
-    @Override
-    public boolean addShift(String storeID, Shift shift) {
-        // Method implementation will go here
-        return false;
     }
 }
