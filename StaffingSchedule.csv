@@ -2,13 +2,12 @@ Day,ShiftTime,RequiredStaff,AvailableStaff,EmployeeID,StaffingStatus
 Tuesday,09:00-13:00,4,1,E001,Understaffed
 Tuesday,09:00-13:00,4,2,E004,Understaffed
 Thursday,05:00-20:00,4,1,E001,Understaffed
-Friday,09:00-13:00,4,1,E002,Understaffed
-Friday,09:00-13:00,4,2,E003,Understaffed
-Friday,09:00-13:00,4,3,E004,Understaffed
+Friday,09:00-13:00,4,1,E003,Understaffed
+Friday,09:00-13:00,4,2,E004,Understaffed
 Saturday,09:00-13:00,4,1,E002,Understaffed
 Saturday,13:00-17:00,4,2,E001,Understaffed
 Sunday,01:00-12:00,4,1,E005,Understaffed
 Sunday,12:00-23:00,4,2,E001,Understaffed
-Tuesday,09:00-13:00,4,3,E002,Understaffed
-Friday,09:00-13:00,4,4,E005,Fully Staffed
+Friday,09:00-13:00,4,3,E005,Understaffed
 Monday,05:30-12:00,4,1,E001,Understaffed
+Tuesday,09:00-10:00,4,3,E002,Understaffed
