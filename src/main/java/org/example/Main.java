@@ -6,9 +6,16 @@ import org.example.fuelInventory.FuelInventoryController;
 import org.example.fuelInventory.FuelInventorySystem;
 import org.example.itemDelivery.InventoryController;
 import org.example.itemDelivery.InventoryManager;
+import org.example.scheduleWorkforce.DatabaseSupport;
+import org.example.scheduleWorkforce.ScheduleController;
+import org.example.scheduleWorkforce.SchedulingSystem;
 import org.example.storeInventory.FilesProduct;
 import org.example.storeInventory.InventoryControllerStore;
 import org.example.storeInventory.StoreInventorySystem;
+import org.example.storeLayout.LayoutController;
+import org.example.storeLayout.SalesData;
+import org.example.storeLayout.StoreLayout;
+import org.example.storeLayout.TrafficData;
 
 import java.util.Scanner;
 
@@ -20,7 +27,7 @@ public class Main {
 
         while (true) {
             System.out.println("Where do you want to go?");
-            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Quit (q)");
+            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Quit (q)");
 
             // Read user input
             String command = scanner.nextLine().toLowerCase();
@@ -117,6 +124,29 @@ public class Main {
                     System.out.println("Exiting the program.");
                     scanner.close(); // Close scanner to prevent resource leak
                     return; // Exit the loop and end the program
+                case "es":
+                    DatabaseSupport databaseSupport = new DatabaseSupport();
+
+                    SchedulingSystem schedulingSystem = new SchedulingSystem(databaseSupport);
+
+                    // Create an instance of the ScheduleController
+                    ScheduleController scheduleController = new ScheduleController(databaseSupport);
+
+                    schedulingSystem.alertInsufficientStaff("Store001");
+                    // Execute the controller's logic
+                    scheduleController.execute();
+
+                case "osl":
+                    // Initialize the necessary objects for sales data, traffic data, and store layout
+                    SalesData salesData = new SalesData("SalesData.csv");
+                    TrafficData trafficData = new TrafficData("TrafficData.csv");
+                    StoreLayout storeLayout = new StoreLayout("StoreLayout.csv");
+
+                    // Create an instance of LayoutController
+                    LayoutController layoutController = new LayoutController(salesData, trafficData, storeLayout);
+
+                    // Execute the controller's logic
+                    layoutController.execute();
 
                 default:
                     System.out.println("Invalid command. Please choose a valid option.");
