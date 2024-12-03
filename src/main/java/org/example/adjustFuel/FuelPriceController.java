@@ -26,6 +26,12 @@ public class FuelPriceController implements FuelPriceControllerInterface {
         // Load current prices
         Map<String, Double> fuelPrices = loadFuelPrices();
 
+        // Check if fuel type exists
+        if (!fuelPrices.containsKey(fuelType)) {
+            System.out.println("Error: Fuel type " + fuelType + " does not exist.");
+            return false;
+        }
+
         // Update price in map
         fuelPrices.put(fuelType, newPrice);
 
@@ -34,7 +40,7 @@ public class FuelPriceController implements FuelPriceControllerInterface {
 
         // Append change to log file with timestamp
         logFuelPriceChange(fuelType, newPrice);
-        return false;
+        return true;
     }
 
     private Map<String, Double> loadFuelPrices() {

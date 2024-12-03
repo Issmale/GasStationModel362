@@ -2,3 +2,10 @@
 Supplier: BigGoods
 ID: 1, Description: Chips, Price: $4.0, Quantity: 400
 
+Supplier: MainSupplier
+ID: 23, Description: Matches, Price: $30.0, Quantity: 23
+ID: 109, Description: Salmon, Price: $20.0, Quantity: 23
+
+Supplier: Amazon
+ID: 1, Description: Pepsi, Price: $2.09, Quantity: 10
+
