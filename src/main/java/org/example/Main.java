@@ -45,7 +45,7 @@ public class Main {
                         switch (choice) {
                             case 1:
                                 // Adjust fuel price
-                                System.out.print("Enter fuel type (e.g., Diesel, Unleaded): ");
+                                System.out.print("Enter fuel type (e.g., Diesel, Unleaded, Premium, E-15): ");
                                 String fuelType = scanner.nextLine();
 
                                 System.out.print("Enter new price for " + fuelType + ": ");

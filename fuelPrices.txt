@@ -1,3 +1,4 @@
-Diesel: 4.5
-Premium: 3.11
-Unleaded: 3.15
+Diesel: 3.2
+Premium: 2.04
+E-15: 30.0
+Unleaded: 4.0
