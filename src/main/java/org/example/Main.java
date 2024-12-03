@@ -16,7 +16,8 @@ import org.example.storeLayout.LayoutController;
 import org.example.storeLayout.SalesData;
 import org.example.storeLayout.StoreLayout;
 import org.example.storeLayout.TrafficData;
-
+import org.example.feedback.*;
+import org.example.equipmentMaintanence.*;
 import java.util.Scanner;
 
 public class Main {
@@ -27,7 +28,7 @@ public class Main {
 
         while (true) {
             System.out.println("Where do you want to go?");
-            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Quit (q)");
+            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Quit (q)");
 
             // Read user input
             String command = scanner.nextLine().toLowerCase();
@@ -148,6 +149,13 @@ public class Main {
                     // Execute the controller's logic
                     layoutController.execute();
 
+                case "fb":
+                    FeedbackSystem feedbackSystem = new FeedbackSystem();
+                    feedbackSystem.execute();
+
+                case "m":
+                    EquipmentMaintenanceSystem system = new EquipmentMaintenanceSystem();
+                    system.execute();
                 default:
                     System.out.println("Invalid command. Please choose a valid option.");
             }
