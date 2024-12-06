@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.adjustFuel.FuelPriceController;
+import org.example.foodAndBeverage.StoreManager;
 import org.example.fuelInventory.FilesFuel;
 import org.example.fuelInventory.FuelInventoryController;
 import org.example.fuelInventory.FuelInventorySystem;
@@ -28,7 +29,7 @@ public class Main {
 
         while (true) {
             System.out.println("Where do you want to go?");
-            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Quit (q)");
+            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Quit (q)");
 
             // Read user input
             String command = scanner.nextLine().toLowerCase();
@@ -156,6 +157,9 @@ public class Main {
                 case "m":
                     EquipmentMaintenanceSystem system = new EquipmentMaintenanceSystem();
                     system.execute();
+                case "fab":
+                    StoreManager storeManager = new StoreManager();
+                    storeManager.manageMenu();
                 default:
                     System.out.println("Invalid command. Please choose a valid option.");
             }
