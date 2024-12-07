@@ -10,6 +10,9 @@ import org.example.itemDelivery.InventoryManager;
 import org.example.scheduleWorkforce.DatabaseSupport;
 import org.example.scheduleWorkforce.ScheduleController;
 import org.example.scheduleWorkforce.SchedulingSystem;
+import org.example.securityCameras.CameraSystem;
+import org.example.securityCameras.SecuritySystemManager;
+import org.example.securityCameras.StorageSystem;
 import org.example.storeInventory.FilesProduct;
 import org.example.storeInventory.InventoryControllerStore;
 import org.example.storeInventory.StoreInventorySystem;
@@ -29,7 +32,7 @@ public class Main {
 
         while (true) {
             System.out.println("Where do you want to go?");
-            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Quit (q)");
+            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Security Camera (sc), Quit (q)");
 
             // Read user input
             String command = scanner.nextLine().toLowerCase();
@@ -160,6 +163,11 @@ public class Main {
                 case "fab":
                     StoreManager storeManager = new StoreManager();
                     storeManager.manageMenu();
+                case "cs":
+                    CameraSystem cameraSystem = new CameraSystem();
+                    StorageSystem storageSystem = new StorageSystem();
+                    SecuritySystemManager securitySystemManager = new SecuritySystemManager(cameraSystem, storageSystem);
+                    securitySystemManager.start();
                 default:
                     System.out.println("Invalid command. Please choose a valid option.");
             }
