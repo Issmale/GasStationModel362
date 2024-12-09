@@ -7,6 +7,7 @@ import org.example.fuelInventory.FuelInventoryController;
 import org.example.fuelInventory.FuelInventorySystem;
 import org.example.itemDelivery.InventoryController;
 import org.example.itemDelivery.InventoryManager;
+import org.example.produceDocumentation.ComplianceMenu;
 import org.example.scheduleWorkforce.DatabaseSupport;
 import org.example.scheduleWorkforce.ScheduleController;
 import org.example.scheduleWorkforce.SchedulingSystem;
@@ -22,6 +23,7 @@ import org.example.storeLayout.StoreLayout;
 import org.example.storeLayout.TrafficData;
 import org.example.feedback.*;
 import org.example.equipmentMaintanence.*;
+import org.example.measureTanks.*;
 import java.util.Scanner;
 
 public class Main {
@@ -32,7 +34,8 @@ public class Main {
 
         while (true) {
             System.out.println("Where do you want to go?");
-            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Security Camera (sc), Quit (q)");
+            System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Compliance Documents (cd)");
+            System.out.println("Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Security Camera (sc), Measure Tanks (mt), Quit (q)");
 
             // Read user input
             String command = scanner.nextLine().toLowerCase();
@@ -168,7 +171,16 @@ public class Main {
                     StorageSystem storageSystem = new StorageSystem();
                     SecuritySystemManager securitySystemManager = new SecuritySystemManager(cameraSystem, storageSystem);
                     securitySystemManager.start();
+                case "mt":
+                    System.out.println("You selected Measure Tanks.");
+                    TankMeasurementMenu tankMeasurementMenu = new TankMeasurementMenu();
+                    tankMeasurementMenu.displayMenu();
+                case "cd":
+                    System.out.println("You selected Compliance Documents.");
+                    ComplianceMenu complianceMenu = new ComplianceMenu();
+                    complianceMenu.displayMenu();
                 default:
+
                     System.out.println("Invalid command. Please choose a valid option.");
             }
         }
