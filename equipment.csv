@@ -1,3 +1,3 @@
 EquipmentID,Name,Status,LastMaintenanceDate
-Zamboni,Zamboni,needs Cleaning,
-1,Pizza Oven,Operational,
+1,Pizza Oven,Operational, 2024-08-09
+2,Gas Pump 1,Operational,

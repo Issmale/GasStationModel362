@@ -1,3 +1,3 @@
 FeedbackID,Details,Category,Status,IsAnonymous
-fb001,Expired item purchased,Store Items,New,false
-fb002,I had a fistfight with the customer,,New,false
+fb001,I was punched by john,Violence,New,true
+fb003,Item was out of stock,,New,true
