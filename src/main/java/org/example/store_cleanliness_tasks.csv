@@ -1,2 +1,5 @@
 Task Name, Area, Frequency, Completed By, Is Completed
 Clean Store,Store,Daily,Matthew,true
+Wash Bathrooms,Bathrooms,Weekly,Matthew,true
+Wash Windows,Store,Daily,,false
+Sweep Floor,Main Floor,Hourly,Bill Nye,true
