@@ -1,3 +1,5 @@
+package org.example.communityMarketing;
+
 import java.io.*;
 import java.util.*;
 
@@ -96,7 +98,7 @@ class CommunityEventSystem implements ICommunityEventSystem {
     public void addEvent(String name, String theme, String location) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(eventsFile, true))) {
             bw.write(String.format("%s,%s,%s%n", name, theme, location));
-            System.out.println("Event added successfully.");
+            System.out.println("Marketing added successfully.");
         } catch (IOException e) {
             System.out.println("Error adding event: " + e.getMessage());
         }
@@ -161,8 +163,8 @@ public class CommunityMarketingSystem {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("\n--- Community Marketing System ---");
-            System.out.println("1. Add Customer");
-            System.out.println("2. Add Event");
+            System.out.println("1. Add Marketing Customer");
+            System.out.println("2. Add Marketing Event");
             System.out.println("3. View Events");
             System.out.println("4. Run Community Campaign");
             System.out.println("5. Exit");
@@ -214,7 +216,7 @@ public class CommunityMarketingSystem {
         String interest = scanner.nextLine().trim();
 
         if (name.isEmpty() || location.isEmpty() || interest.isEmpty()) {
-            System.out.println("All fields are required. Customer not added.");
+            System.out.println("All fields are required. org.example.communityMarketing.Customer not added.");
         } else {
             customerDataSystem.addCustomer(name, location, interest);
         }
@@ -229,7 +231,7 @@ public class CommunityMarketingSystem {
         String eventLocation = scanner.nextLine().trim();
 
         if (eventName.isEmpty() || theme.isEmpty() || eventLocation.isEmpty()) {
-            System.out.println("All fields are required. Event not added.");
+            System.out.println("All fields are required. org.example.communityMarketing.Event not added.");
         } else {
             communityEventSystem.addEvent(eventName, theme, eventLocation);
         }
@@ -277,7 +279,7 @@ class Customer {
 
     @Override
     public String toString() {
-        return String.format("Customer[name=%s, location=%s, interest=%s]", name, location, interest);
+        return String.format("org.example.communityMarketing.Customer[name=%s, location=%s, interest=%s]", name, location, interest);
     }
 }
 class CustomerDataSystem implements ICustomerDataSystem {
@@ -304,13 +306,13 @@ class CustomerDataSystem implements ICustomerDataSystem {
 
     public void addCustomer(String name, String location, String interest) {
         if (name.isEmpty() || location.isEmpty() || interest.isEmpty()) {
-            System.out.println("Customer name, location, and interest cannot be empty.");
+            System.out.println("org.example.communityMarketing.Customer name, location, and interest cannot be empty.");
             return;
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(customerDataFile, true))) {
             bw.write(String.format("%s,%s,%s%n", name, location, interest));
-            System.out.println("Customer added successfully.");
+            System.out.println("org.example.communityMarketing.Customer added successfully.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -337,7 +339,7 @@ class Event {
 
     @Override
     public String toString() {
-        return String.format("Event[name=%s, theme=%s, location=%s]", name, theme, location);
+        return String.format("org.example.communityMarketing.Event[name=%s, theme=%s, location=%s]", name, theme, location);
     }
 }
 
