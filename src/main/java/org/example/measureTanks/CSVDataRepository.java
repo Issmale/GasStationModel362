@@ -37,15 +37,24 @@ public class CSVDataRepository implements DataRepository {
                     continue;
                 }
                 String[] parts = line.split(",");
-                String tankId = parts[0];
-                double fuelLevel = Double.parseDouble(parts[1]);
-                records.add(new FuelTankRecord(tankId, fuelLevel));
+                if (parts.length < 2) { // Ensure at least two fields are present
+                    System.err.println("Skipping malformed line: " + line);
+                    continue;
+                }
+                try {
+                    String tankId = parts[0].trim();
+                    double fuelLevel = Double.parseDouble(parts[1].trim());
+                    records.add(new FuelTankRecord(tankId, fuelLevel));
+                } catch (NumberFormatException e) {
+                    System.err.println("Skipping line with invalid fuel level: " + line);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
         return records;
     }
+
 
     @Override
     public void saveRecord(FuelTankRecord record) {
