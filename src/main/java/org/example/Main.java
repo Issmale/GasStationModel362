@@ -1,10 +1,13 @@
 package org.example;
 
 import org.example.adjustFuel.FuelPriceController;
+import org.example.communityMarketing.CommunityMarketingSystem;
 import org.example.foodAndBeverage.StoreManager;
+import org.example.fuelDelivery.FuelDeliveryManagementSystem;
 import org.example.fuelInventory.FilesFuel;
 import org.example.fuelInventory.FuelInventoryController;
 import org.example.fuelInventory.FuelInventorySystem;
+import org.example.hiring.HiringManagementSystem;
 import org.example.itemDelivery.InventoryController;
 import org.example.itemDelivery.InventoryManager;
 import org.example.produceDocumentation.ComplianceMenu;
@@ -35,7 +38,8 @@ public class Main {
         while (true) {
             System.out.println("Where do you want to go?");
             System.out.println("Adjust Fuel (a), Fuel Inventory (f), Item Delivery (i), Store Inventory (s), Employee Scheduling (es), Compliance Documents (cd)");
-            System.out.println("Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Security Camera (sc), Measure Tanks (mt), Quit (q)");
+            System.out.println("Optimize store layout (osl), Feedback (fb), Equipment Maintenance (m), Food and Beverage (fab), Security Camera (sc), Measure Tanks (mt)");
+            System.out.println("Fuel Delivery(fd), Marketing(mark), Hiring(h) ,Quit (q)");
 
             // Read user input
             String command = scanner.nextLine().toLowerCase();
@@ -179,6 +183,18 @@ public class Main {
                     System.out.println("You selected Compliance Documents.");
                     ComplianceMenu complianceMenu = new ComplianceMenu();
                     complianceMenu.displayMenu();
+                case "fd":
+                    System.out.println("You selected Fuel Delivery.");
+                    FuelDeliveryManagementSystem Deliver = new FuelDeliveryManagementSystem();
+                    Deliver.main(null);
+                case "mark":
+                    System.out.println("You selected Marketing.");
+                    CommunityMarketingSystem Market = new CommunityMarketingSystem();
+                    Market.main(null);
+                case "h":
+                    System.out.println("You selected Hiring.");
+                    HiringManagementSystem hire = new HiringManagementSystem();
+                    hire.main(null);
                 default:
 
                     System.out.println("Invalid command. Please choose a valid option.");
