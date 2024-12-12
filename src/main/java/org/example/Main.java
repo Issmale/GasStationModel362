@@ -28,6 +28,9 @@ import org.example.feedback.*;
 import org.example.equipmentMaintanence.*;
 import org.example.measureTanks.*;
 import java.util.Scanner;
+import org.example.cleanlinessHygiene.MainClean;
+import org.example.safetyTraining.MainSafe;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -195,6 +198,12 @@ public class Main {
                     System.out.println("You selected Hiring.");
                     HiringManagementSystem hire = new HiringManagementSystem();
                     hire.main(null);
+                case "cl":
+                    System.out.println("You selected Cleaning.");
+                    MainClean.main(null);
+                case "safe":
+                    System.out.println("You selected Safety.");
+                    MainSafe.main(null);
                 default:
 
                     System.out.println("Invalid command. Please choose a valid option.");

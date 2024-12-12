@@ -3,7 +3,7 @@ package org.example.safetyTraining;
 
 import java.util.*;
 
-public class Main {
+public class MainSafe {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         SafetyLearningManager manager = new SafetyLearningManager();
