@@ -60,7 +60,6 @@ public class Main {
                         System.out.println("2. Print Fuel Price Change Log");
                         System.out.println("3. Exit");
                         System.out.print("Please select an option (1-3): ");
-
                         int choice = scanner.nextInt();
                         scanner.nextLine(); // Consume newline
 
